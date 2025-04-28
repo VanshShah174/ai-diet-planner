@@ -96,7 +96,9 @@ export default function Index() {
       >
         <Button
           title={"Get Started"}
-          onPress={() => router.push("/auth/SignIn")}
+          // onPress={() => router.push("/auth/SignIn")}
+          onPress={() => router.push("/(tabs)/Progress")}
+
         />
       </View>
     </View>
