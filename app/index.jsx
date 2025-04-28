@@ -16,12 +16,13 @@ export default function Index() {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (userInfo) => {
-      console.log(userInfo);
+      // console.log(userInfo);
       const userData = await convex.query(api.Users.GetUser, {
         email: userInfo?.email,
       });
       console.log(userData);
       setUser(userData);
+      router.replace("/(tabs)/Progress");
     });
     return () => unsubscribe();
   },[]);
