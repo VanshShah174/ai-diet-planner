@@ -22,6 +22,8 @@ import { api } from "./../../convex/_generated/api";
 import { UserContext } from "./../../context/UserContext";
 import { useRouter } from "expo-router";
 import { useMutation } from "convex/react";
+import { CalculateCaloriesAI } from "../../services/AiModel";
+import Prompt, { CALORIES_PROMPT } from "../../shared/Prompt";
 
 const Preference = () => {
   const [weight, setWeight] = useState("");
@@ -39,7 +41,7 @@ const Preference = () => {
       return;
     }
 
-    const data = {
+     const data = {
       uid: user?._id,
       height: height,
       weight: weight,
@@ -47,12 +49,27 @@ const Preference = () => {
       goal: goal,
     };
 
+    // Calculate Calories Using AI :
+    const PROMPT = JSON.stringify(data) + Prompt.CALORIES_PROMPT;
+  console.log("Sending to AI:", PROMPT);
+
+  // Get AI result
+  const AIResult = await CalculateCaloriesAI(PROMPT);
+  // console.log("AI Response:", AIResult);
+  const JSONContent = JSON.parse (AIResult.replace('```json', " ").replace('```', ""))
+  console.log("Parsed AI Response:", JSONContent);
+
+   
+
     const result = await UpdateUserPref({
       ...data,
+      ...JSONContent,
     });
     setUser((prev) => ({
       ...prev,
       ...data,
+      // calories,
+      // proteins,
     }));
 
     router.replace('/(tabs)/Home');
