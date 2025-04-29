@@ -1,22 +1,32 @@
-import { View, Text, TextInput } from 'react-native'
+import { View, Text, TextInput, Dimensions } from 'react-native'
 import React, { useState } from 'react'
 
-const Input = ({placeholder , password = false, onChangeText}) => {
+const Input = ({placeholder , password = false, onChangeText, label =""}) => {
   return (
-   
+   <View
+   style ={{
+    marginTop: 15,
+    width: '100%',
+   }}
+   >
+    <Text style={{
+      fontWeight:'medium',
+      fontSize: 18,
+    }}>{label}</Text>
     <TextInput placeholder={placeholder}
     secureTextEntry={password}
     onChangeText={(text) => onChangeText(text)}
     style={{
-       padding: 10,
+       padding: 15,
        borderWidth: 1,
        borderRadius: 10,
-       width: '100%',
-       marginTop: 20,
+       width: "auto",
        fontSize: 20,
-       paddingHorizontal: 20
-    }}
+       paddingVertical: 20, 
+       marginTop: 2,
+       }}
     />
+    </View>
   )
 }
 
