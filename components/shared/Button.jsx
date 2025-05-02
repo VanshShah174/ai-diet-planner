@@ -7,7 +7,7 @@ const Button = ({title, onPress}) => {
     <TouchableOpacity
     onPress={onPress}
     style={{
-        padding: 20,
+        padding: 13,
         backgroundColor: Colors.PRIMARY,
         width: '100%',
         borderRadius: 10,
@@ -16,7 +16,7 @@ const Button = ({title, onPress}) => {
       <Text
       style ={{
         color: Colors.WHITE,
-        fontSize: 20,
+        fontSize: 18,
         textAlign: 'center',
       }}
       >{title}</Text>
