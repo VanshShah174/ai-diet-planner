@@ -55,7 +55,7 @@ const Preference = () => {
 
   // Get AI result
   const AIResult = await CalculateCaloriesAI(PROMPT);
-  // console.log("AI Response:", AIResult);
+  console.log("AI Response:", AIResult);
   const JSONContent = JSON.parse (AIResult.replace('```json', " ").replace('```', ""))
   console.log("Parsed AI Response:", JSONContent);
 

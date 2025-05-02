@@ -8,6 +8,7 @@ const TabLayout = () => {
   return (
     <Tabs screenOptions={{
         tabBarActiveTintColor: Colors.PRIMARY,
+        headerShown: false,
     }}>
         <Tabs.Screen name="Home" options={{
             tabBarIcon: ({color,size}) => <HugeiconsIcon
