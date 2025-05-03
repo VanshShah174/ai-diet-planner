@@ -8,8 +8,11 @@ import {
   HugeiconsFreeIcons,
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react-native";
+import { useRouter } from "expo-router";
 
 const GenerateRecipeCard = () => {
+
+  const router = useRouter()
   return (
     <LinearGradient
       colors={[Colors.BLUE, Colors.PRIMARY]}
@@ -53,6 +56,8 @@ const GenerateRecipeCard = () => {
           alignItems: "center",
           gap: 7,
         }}
+        onPress={() => router.push("/generate-ai-recipe")}
+
       >
         <Text
           style={{
