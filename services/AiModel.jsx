@@ -1,6 +1,6 @@
 // services/AiModel.jsx
 
-const AIMODELNAME ="google/gemma-3-1b-it:free";
+const AIMODELNAME ="qwen/qwen-2.5-7b-instruct:free";
 
 export const CalculateCaloriesAI = async (PROMPT) => {
     try {
