@@ -2,7 +2,7 @@ import { View, Text, Platform, TextInput, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import Colors from "../../shared/Colors";
 import Button from "../../components/shared/Button";
-import { GenerateRecipeOptionsAiModel } from "../../services/AiModel";
+import { GenerateAIRecipe, GenerateRecipeOptionsAiModel } from "../../services/AiModel";
 import Prompt from "../../shared/Prompt";
 import RecipeOptionList from "../../components/RecipeOptionList";
 
@@ -23,7 +23,7 @@ const GenerateAiRecipe = () => {
       const PROMPT = `User wants: "${input}". ${Prompt.GENERATE_RECIPE_OPTIONS_PROMPT}`;
       console.log("Generated Prompt:", PROMPT);
   
-      const result = await GenerateRecipeOptionsAiModel(PROMPT);
+      const result = await GenerateAIRecipe(PROMPT);
       console.log("Raw AI Response:", result);
   
       let extractJson = result.trim();

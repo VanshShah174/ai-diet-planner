@@ -1,5 +1,7 @@
 // services/AiModel.jsx
 
+import axios from "axios";
+
 const AIMODELNAME ="qwen/qwen-2.5-7b-instruct:free";
 
 export const CalculateCaloriesAI = async (PROMPT) => {
@@ -35,7 +37,7 @@ export const CalculateCaloriesAI = async (PROMPT) => {
     }
   };
   
-  export const GenerateRecipeOptionsAiModel = async (PROMPT) => {
+  export const GenerateAIRecipe = async (PROMPT) => {
     try {
       const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
@@ -75,3 +77,19 @@ export const CalculateCaloriesAI = async (PROMPT) => {
     }
   };
   
+
+  const BASE_URL='https://aigurulab.tech';
+export const GenerateRecipeImage = async (prompt) => await axios.post(BASE_URL+'/api/generate-image',
+        {
+            width: 1024,
+            height: 1024,
+            input: prompt,
+            model: 'sdxl',//'flux'
+            aspectRatio:"1:1"//Applicable to Flux model only
+        },
+        {
+            headers: {
+                'x-api-key': process.env.EXPO_PUBLIC_AIGURU_LAB_API_KEY, // Your API Key
+                'Content-Type': 'application/json', // Content Type
+            },
+        })
